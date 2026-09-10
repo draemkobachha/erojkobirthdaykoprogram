@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday 🎂</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+        }
+
+        .cake {
+            font-size: 100px;
+            animation: bounce 1s infinite alternate;
+        }
+
+        h1 {
+            font-size: 55px;
+            color: gold;
+            text-shadow: 0 0 20px orange;
+        }
+
+        h2 {
+            font-size: 30px;
+        }
+
+        button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            background: gold;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        #message {
+            display: none;
+            margin-top: 25px;
+            font-size: 22px;
+            color: #ffe600;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            font-size: 50px;
+            animation: fly 5s linear forwards;
+        }
+
+        @keyframes fly {
+            0% {
+                bottom: -100px;
+                opacity: 1;
+            }
+
+            100% {
+                bottom: 110vh;
+                opacity: 0;
+            }
+        }
+
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(-15px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="cake">🎂</div>
+
+        <h1>HAPPY BIRTHDAY!</h1>
+
+        <h2 id="friendName">My Amazing Friend 🎉</h2>
+
+        <p>
+            Wishing you happiness, success, laughter,
+            and an unforgettable year ahead! 🥳
+        </p>
+
+        <button id="surpriseButton">
+            🎁 Click for a Surprise
+        </button>
+
+        <div id="message">
+            🎉 SURPRISE! 🎉 <br><br>
+            May all your dreams come true! ❤️<br>
+            Keep smiling and keep shining! ✨
+        </div>
+
+    </div>
+
+    <script>
+
+        // 👇 CHANGE YOUR FRIEND'S NAME HERE
+        const name = "YOUR FRIEND";
+
+        document.getElementById("friendName").textContent =
+            "Happy Birthday, " + name + "! 🎉";
+
+
+        // Button
+        document.getElementById("surpriseButton").addEventListener("click", function () {
+
+            // Show surprise message
+            document.getElementById("message").style.display = "block";
+
+            // Create balloons
+            for (let i = 0; i < 30; i++) {
+
+                let balloon = document.createElement("div");
+
+                balloon.className = "balloon";
+
+                balloon.textContent =
+                    Math.random() > 0.5 ? "🎈" : "🎉";
+
+                balloon.style.left =
+                    Math.random() * 100 + "vw";
+
+                balloon.style.animationDuration =
+                    (3 + Math.random() * 3) + "s";
+
+                document.body.appendChild(balloon);
+
+                setTimeout(function () {
+                    balloon.remove();
+                }, 6000);
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
